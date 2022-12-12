@@ -3,8 +3,7 @@ FROM	 archlinux:latest
 # Update the repositories
 RUN	 pacman -Syy
 
-RUN /bin/sh -c echo '[multilib]' >> /etc/pacman.conf && \ 
-    echo 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf && \
+RUN /bin/sh -c echo '[multilib]' >> /etc/pacman.conf && \     
     pacman --noconfirm -Syyu && \
     pacman --noconfirm -S base-devel git && \
     useradd -m -r -s /bin/bash aur && \
@@ -23,3 +22,11 @@ RUN /bin/sh -c echo '[multilib]' >> /etc/pacman.conf && \
     pacman -Qtdq | xargs -r pacman --noconfirm -Rcns && \
     rm -rf /home/aur/.cache && \
     rm -rf /build
+
+RUN yay -S --noconfirm zsh oh-my-posh
+RUN echo 'export POSH_THEME=/usr/share/oh-my-posh/themes/stelbent.minimal.omp.json' >> ~/.zshrc
+RUN echo 'eval "$(oh-my-posh init zsh)"' >> ~/.zshrc
+
+ENV SHELL=/usr/bin/zsh
+
+
