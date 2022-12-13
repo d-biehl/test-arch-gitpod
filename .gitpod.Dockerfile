@@ -17,15 +17,17 @@ RUN /bin/sh -c echo '[multilib]' >> /etc/pacman.conf && \
     cd /build && \
     sudo -u aur git clone --depth 1 https://aur.archlinux.org/yay.git && \
     cd yay && \
-    sudo -u aur makepkg --noconfirm -si && \
-    sudo -u aur yay --afterclean --removemake --save && \
+    sudo -u aur makepkg --noconfirm -si && 
+
+RUN sudo -u aur yay -S --needed --noconfirm zsh easy-zsh-config
+RUN sed -i -r "s/^(PATH_OF_THE_THEME=).*/\1\/usr\/share\/oh-my-posh\/themes\/stelbent\.minimal\.omp\.json/" /etc/zsh/zshrc 
+
+RUN sudo -u aur yay -S --needed --noconfirm python python-pip python-setuptools python-poetry python-pipenv pyenv nodejs npm npm-check-updates
+
+RUN sudo -u aur yay --cleanafter --removemake --save && \
     pacman -Qtdq | xargs -r pacman --noconfirm -Rcns && \
     rm -rf /home/aur/.cache && \
     rm -rf /build
-
-RUN yay -S --noconfirm zsh 
-RUN echo 'export POSH_THEME=/usr/share/oh-my-posh/themes/stelbent.minimal.omp.json' >> ~/.zshrc
-RUN echo 'eval "$(oh-my-posh init zsh)"' >> ~/.zshrc
 
 ENV SHELL=/usr/bin/zsh
 
