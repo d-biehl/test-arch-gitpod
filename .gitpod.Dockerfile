@@ -21,7 +21,9 @@ RUN /bin/sh -c echo '[multilib]' >> /etc/pacman.conf && \
 
 RUN sudo -u aur yay -S --needed --noconfirm zsh easy-zsh-config
 
+
 RUN sed -i -r "s/^(PATH_OF_THE_THEME=).*/\1\/usr\/share\/oh-my-posh\/themes\/stelbent\.minimal\.omp\.json/" /etc/zsh/zshrc 
+RUN sed -i -r "s/^(PATH_OF_THE_THEME=).*/\1\/usr\/share\/oh-my-posh\/themes\/stelbent\.minimal\.omp\.json/" /etc/skel/.zshrc 
 
 RUN sudo -u aur yay -S --needed --noconfirm python python-pip python-setuptools python-poetry python-pipenv pyenv nodejs npm npm-check-updates
 
