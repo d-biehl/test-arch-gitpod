@@ -34,7 +34,7 @@ RUN sudo -u aur yay --cleanafter --removemake --save && \
     rm -rf /home/aur/.cache && \
     rm -rf /build
 
-RUN useradd -l -u 33333 -G sudo -md /home/gitpod -s /bin/zsh -p gitpod gitpod
+RUN useradd -l -u 33333 -G wheel -md /home/gitpod -s /bin/zsh -p gitpod gitpod
 USER gitpod
 
 # ENV SHELL=/usr/bin/zsh
