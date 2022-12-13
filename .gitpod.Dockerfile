@@ -17,7 +17,7 @@ RUN /bin/sh -c echo '[multilib]' >> /etc/pacman.conf && \
     cd /build && \
     sudo -u aur git clone --depth 1 https://aur.archlinux.org/yay.git && \
     cd yay && \
-    sudo -u aur makepkg --noconfirm -si && 
+    sudo -u aur makepkg --noconfirm -si  
 
 RUN sudo -u aur yay -S --needed --noconfirm zsh easy-zsh-config
 RUN sed -i -r "s/^(PATH_OF_THE_THEME=).*/\1\/usr\/share\/oh-my-posh\/themes\/stelbent\.minimal\.omp\.json/" /etc/zsh/zshrc 
