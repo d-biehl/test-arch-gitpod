@@ -1,0 +1,19 @@
+{
+  "name": "test-arch-gitpod",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/d-biehl/test-arch-gitpod.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/d-biehl/test-arch-gitpod/issues"
+  },
+  "homepage": "https://github.com/d-biehl/test-arch-gitpod#readme"
+}
