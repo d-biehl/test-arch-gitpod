@@ -37,4 +37,4 @@ RUN sudo -u aur yay --cleanafter --removemake --save && \
 RUN useradd -l -u 33333 -G wheel -md /home/gitpod -s /bin/zsh -p gitpod gitpod
 USER gitpod
 
-# ENV SHELL=/usr/bin/zsh
+ENV SHELL=/usr/bin/zsh
