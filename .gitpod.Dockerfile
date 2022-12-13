@@ -20,9 +20,14 @@ RUN /bin/sh -c echo '[multilib]' >> /etc/pacman.conf && \
     sudo -u aur makepkg --noconfirm -si  
 
 RUN sudo -u aur yay -S --needed --noconfirm zsh easy-zsh-config
+
 RUN sed -i -r "s/^(PATH_OF_THE_THEME=).*/\1\/usr\/share\/oh-my-posh\/themes\/stelbent\.minimal\.omp\.json/" /etc/zsh/zshrc 
 
 RUN sudo -u aur yay -S --needed --noconfirm python python-pip python-setuptools python-poetry python-pipenv pyenv nodejs npm npm-check-updates
+
+RUN echo 'export PYENV_ROOT="$HOME/.pyenv"' >> /etc/zsh/zshrc 
+RUN echo 'command -v pyenv >/dev/null || export PATH="$PATH:$PYENV_ROOT/bin"' >> /etc/zsh/zshrc 
+RUN echo 'eval "$(pyenv init -)"' >> /etc/zsh/zshrc 
 
 RUN sudo -u aur yay --cleanafter --removemake --save && \
     pacman -Qtdq | xargs -r pacman --noconfirm -Rcns && \
