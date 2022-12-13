@@ -23,7 +23,7 @@ RUN /bin/sh -c echo '[multilib]' >> /etc/pacman.conf && \
     rm -rf /home/aur/.cache && \
     rm -rf /build
 
-RUN yay -S --noconfirm zsh oh-my-posh
+RUN yay -S --noconfirm zsh 
 RUN echo 'export POSH_THEME=/usr/share/oh-my-posh/themes/stelbent.minimal.omp.json' >> ~/.zshrc
 RUN echo 'eval "$(oh-my-posh init zsh)"' >> ~/.zshrc
 
