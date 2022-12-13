@@ -5,7 +5,7 @@ RUN	 pacman -Syy
 
 RUN /bin/sh -c echo '[multilib]' >> /etc/pacman.conf && \     
     pacman --noconfirm -Syyu && \
-    pacman --noconfirm -S base-devel git && \
+    pacman --noconfirm -S base-devel git git-lfs && \
     useradd -m -r -s /bin/bash aur && \
     passwd -d aur && \
     echo 'aur ALL=(ALL) ALL' > /etc/sudoers.d/aur && \
@@ -34,4 +34,7 @@ RUN sudo -u aur yay --cleanafter --removemake --save && \
     rm -rf /home/aur/.cache && \
     rm -rf /build
 
-ENV SHELL=/usr/bin/zsh
+RUN useradd -l -u 33333 -G sudo -md /home/gitpod -s /bin/zsh -p gitpod gitpod
+USER gitpod
+
+# ENV SHELL=/usr/bin/zsh

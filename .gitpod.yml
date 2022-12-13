@@ -2,10 +2,10 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - name: init npm
-    init: npm install --also-dev
-  - name: init python
-    init: poetry install
+  - name: init dev environment
+    init: >
+      npm install --also-dev &&
+      poetry install
 
 vscode:
   extensions:

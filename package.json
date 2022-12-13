@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/d-biehl/test-arch-gitpod/issues"
   },
-  "homepage": "https://github.com/d-biehl/test-arch-gitpod#readme"
+  "homepage": "https://github.com/d-biehl/test-arch-gitpod#readme",
+  "devDependencies": {
+    "typescript": "^4.9.4"
+  }
 }
